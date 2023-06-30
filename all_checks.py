@@ -1,5 +1,5 @@
 import os
-import sys
+import os
 import shutil
 #these functions check the disk ! 
 def check_reboot():
@@ -13,15 +13,19 @@ def check_disk_full(disk, min_gb, min_percent):
     if percent_free<min_percent or gigabytes_free < min_gb:
         return True
     return False
+def check_root_full():
+    "True = root partition is full."
+    return check_disk_full(disk="/", min_gb=2, min_percent=10)
+
 
 def main():
     if check_reboot():
         print("pending reboot.")
-        sys.exit(1)
-    if check_disk_full(disk="/", min_gb=2, min_percent=10):
-        print("disk full.")
-        sys.exit(1)
+        os._exit(1)
+    if check_root_full():
+        print("root is full.")
+        os._exit(1)
     print("everything ok.")
-    sys.exit(0)
+    os._exit(0)
 
 main()
