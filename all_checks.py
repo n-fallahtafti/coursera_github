@@ -6,6 +6,8 @@ def check_reboot():
     return os.path.exists("/run/reboot-required")
 
 print("other person is working :)) ")
+def check_disk_full(disk, min_gb, min_percent):
+    pass
 def main():
     if check_reboot():
         print("pending reboot.")
