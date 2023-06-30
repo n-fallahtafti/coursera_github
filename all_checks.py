@@ -5,7 +5,6 @@ import shutil
 def check_reboot():
     "return True if the computer has a pending reboot"
     return os.path.exists("/run/reboot-required")
-
 def check_disk_full(disk, min_gb, min_percent):
     "true = there is enough free disk space"
     du = shutil.disk_usage(disk)
@@ -14,7 +13,6 @@ def check_disk_full(disk, min_gb, min_percent):
     if percent_free<min_percent or gigabytes_free < min_gb:
         return True
     return False
-
 
 def main():
     if check_reboot():
