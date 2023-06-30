@@ -1,5 +1,4 @@
 import os
-import os
 import shutil
 #these functions check the disk ! 
 def check_reboot():
@@ -19,12 +18,15 @@ def check_root_full():
 
 
 def main():
-    if check_reboot():
-        print("pending reboot.")
-        os._exit(1)
-    if check_root_full():
-        print("root is full.")
-        os._exit(1)
+    checks=[
+        (check_reboot,"pending reboot"),
+        (check_root_full,"root is full.")
+    ]
+    for check, msg in checks:
+        if check():
+            print(msg)
+            os._exit(1)
+ 
     print("everything ok.")
     os._exit(0)
 
