@@ -2,4 +2,4 @@
 this is just some learning git from google :)
 this are new changes ^_^
 
-this is a change that i wanna learn about git rebase :))
+I made this change to learn about rebase. 
