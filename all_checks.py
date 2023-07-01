@@ -1,7 +1,7 @@
 import os
 import sys
 import shutil
-
+#these functions check the disk ! 
 def check_reboot():
     "return True if the computer has a pending reboot"
     return os.path.exists("/run/reboot-required")
