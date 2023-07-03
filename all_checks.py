@@ -15,7 +15,9 @@ def check_disk_full(disk, min_gb, min_percent):
 def check_root_full():
     "True = root partition is full."
     return check_disk_full(disk="/", min_gb=2, min_percent=10)
-
+def check_cpu_constrained():
+    """True = CPU is having too much usage"""
+    return psutil.cpu_persent(1) > 75
 
 def main():
     checks=[
