@@ -5,10 +5,10 @@ import psutil
 
 #these functions check the disk ! 
 def check_reboot():
-    "return True if the computer has a pending reboot"
+    """return True if the computer has a pending reboot"""
     return os.path.exists("/run/reboot-required")
 def check_disk_full(disk, min_gb, min_percent):
-    "true = there is enough free disk space"
+    """true = there is enough free disk space"""
     du = shutil.disk_usage(disk)
     percent_free = 100 * du.free / du.total
     gigabytes_free = du.free / 2**30 
@@ -16,7 +16,7 @@ def check_disk_full(disk, min_gb, min_percent):
         return True
     return False
 def check_root_full():
-    "True = root partition is full."
+    """True = root partition is full."""
     return check_disk_full(disk="/", min_gb=2, min_percent=10)
 
 def check_cpu_constrained():
